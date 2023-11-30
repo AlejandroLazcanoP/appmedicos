@@ -1,0 +1,60 @@
+<%- include('partials/_header') %>
+<h1>Registro especialidad</h1>
+
+
+<div class="conteiner">
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>n#</th>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(data){ %>
+                        <% for(var i =0; i < data.length;i++ ) { %>
+                            <tr>
+                                <td><%= (i+1) %></td>
+                                <td> <%= data[i].nombre%></td>
+                                <td> <%= data[i].categoria%></td>
+                                <td>
+                                    <a href="/especialidad/delete/<%= data[i].id %>" class="btn btn-danger">Eliminar</a>
+                                    <a href="/especialidad/update/<%= data[i].id %>" class="btn btn-info">Actualizar</a>
+
+                                </td>
+                            </tr>
+                       <% }%>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <form action="/especialidad/add" method="post">
+                    <div class="form-group">
+                        <input type="text" name="nombre" placeholder="nombre" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="categoria" placeholder="categoria" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Registrar Especialidad
+                    </button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<%- include('partials/_footer') %>
+

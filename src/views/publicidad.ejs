@@ -1,0 +1,23 @@
+<%- include('partials/_header') %>
+
+<div class="container mt-5">
+    <h1>Publicidad</h1>
+
+    <div class="row">
+        <% for (var i = 0; i < publicidad.length; i++) { %>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= publicidad[i].nombre_completo %></h5>
+                        <p class="card-text">Correo: <%= publicidad[i].correo %></p>
+                        
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/_footer') %>
+
+

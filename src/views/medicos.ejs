@@ -1,0 +1,76 @@
+<%- include('partials/_header') %>
+<h1>Registro Medicos</h1>
+
+
+<div class="conteiner">
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>n#</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Direccion</th>
+                        <th>Especialidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(data){ %>
+                        <% for(var i =0; i < data.length;i++ ) { %>
+                            <tr>
+                                <td><%= (i+1) %></td>
+                                <td> <%= data[i].nombre%></td>
+                                <td> <%= data[i].correo%></td>
+                                <td> <%= data[i].direccion%></td>
+                                <td> <%= data[i].nombre_especialidad%></td>
+                                <td>
+                                    <a href="/medicos/delete/<%= data[i].id %>" class="btn btn-danger">Eliminar</a>
+                                    <a href="/medicos/update/<%= data[i].id %>" class="btn btn-info">Actualizar</a>
+                                </td>
+                            </tr>
+                       <% }%>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <form action="/medicos/add" method="post">
+                    <div class="form-group">
+                        <input type="text" name="nombre" placeholder="nombre" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="correo" placeholder="correo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="direccion" placeholder="direccion" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_especialidad">Especialidad:</label>
+                        <select name="id_especialidad" class="form-control">
+                            <% if (especialidades) { %>
+                                <% for (var i = 0; i < especialidades.length; i++) { %>
+                                    <option value="<%= especialidades[i].id %>"><%= especialidades[i].nombre %></option>
+                                <% } %>
+                            <% } %>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        Registrar Medico
+                    </button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<%- include('partials/_footer') %>
